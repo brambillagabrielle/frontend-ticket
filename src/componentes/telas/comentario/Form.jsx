@@ -59,7 +59,7 @@ function Form() {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="txtTexto" className="form-label">Texto</label>
-                                <input type="text" className="form-control"
+                                <textarea type="text" className="form-control"
                                     id="txtTexto" placeholder="Informe o texto"
                                     required name="texto" value={objeto.texto}
                                     onChange={handleChange} />

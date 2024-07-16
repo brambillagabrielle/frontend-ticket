@@ -108,7 +108,6 @@ function Ticket() {
         recuperaTickets();
     }, []);
 
-
     return (
         <TicketContext.Provider value={{
             alerta, listaObjetos, remover,

@@ -12,42 +12,42 @@ import Login from "./componentes/telas/login/Login";
 
 const router = createBrowserRouter([
   {
-    path : "/",
-    element : <MenuPublico/>,
-    children : [
+    path: "/",
+    element: <MenuPublico />,
+    children: [
       {
-        index : true,
-        element : <Home/>
+        index: true,
+        element: <Home />
       },
       {
-        path : "login",
-        element : <Login/>
-      }           
+        path: "login",
+        element: <Login />
+      }
     ]
   },
   {
-    path : "/privado",
-    element : <MenuPrivado/>,
-    children : [
+    path: "/privado",
+    element: <MenuPrivado />,
+    children: [
       {
-        index : true,
-        element : <Home/>
+        index: true,
+        element: <Home />
       },
       {
-        path : "tickets",
-        element : <Ticket/>
+        path: "tickets",
+        element: <Ticket />
       },
       {
-        path : "comentarios",
-        element : <Comentario/>
+        path: "comentarios",
+        element: <Comentario />
       }
     ]
-  }  
+  }
 ])
 
 function App() {
   return (
-      <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   );
 }
 

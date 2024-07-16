@@ -32,39 +32,33 @@ function Form() {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h1 className="modal-title fs-5"
-                            id="exampleModalLabel">{(objeto.resumo !== "" && objeto.resumo) || "Novo Ticket"} {objeto.tipo !== "" && <Status status={objeto.status} />}</h1>
+                            id="exampleModalLabel">{(objeto.id === 0 && objeto.resumo) || "Novo Ticket"} {objeto.tipo !== "" && <Status status={objeto.status} />}</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form id="formulario" onSubmit={acaoPostar}
                         className="needs-validation" noValidate>
                         <div className="modal-body">
                             <Alerta alerta={alerta} />
+                            <div className="mb-3">
+                                <label htmlFor="txtDataAbertura" className="form-label">Data de Abertura</label>
+                                {(objeto.data_abertura !== "" &&
+                                    <input type="text" className="form-control" id="txtDataAbertura"
+                                        readOnly name="dataAbertura" value={
+                                            new Date(objeto.data_abertura).toLocaleDateString(undefined, {
+                                                year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric"
+                                            })
+                                        } onChange={handleChange} />)
+                                    || <input type="text" className="form-control" id="txtDataAbertura"
+                                        readOnly name="dataAbertura" value={objeto.data_abertura} onChange={handleChange} />
+                                }
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="txtId" className="form-label">ID</label>
+                                <input type="number" className="form-control" id="txtId"
+                                    readOnly name="id" value={objeto.id} onChange={handleChange} />
+                            </div>
                             {
-                                (objeto.resumo !== "") && 
-                                <div className="mb-3">
-                                    <label htmlFor="txtDataAbertura" className="form-label">Data de Abertura</label>
-                                    {(objeto.data_abertura !== "" &&
-                                        <input type="text" className="form-control" id="txtDataAbertura"
-                                            readOnly name="dataAbertura" value={
-                                                new Date(objeto.data_abertura).toLocaleDateString(undefined, {
-                                                    year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric"
-                                                })
-                                            } onChange={handleChange} />)
-                                        || <input type="text" className="form-control" id="txtDataAbertura"
-                                            readOnly name="dataAbertura" value={objeto.data_abertura} onChange={handleChange} />
-                                    }
-                                </div>
-                            }
-                            {
-                                (objeto.resumo !== "") && 
-                                <div className="mb-3">
-                                    <label htmlFor="txtId" className="form-label">ID</label>
-                                    <input type="number" className="form-control" id="txtId"
-                                        readOnly name="id" value={objeto.id} onChange={handleChange} />
-                                </div>
-                            }
-                            {
-                                (usuario.tipo !== 'S' && objeto.resumo !== "") && <div className="mb-3">
+                                (usuario.tipo !== 'S' && objeto.id === 0) && <div className="mb-3">
                                     <label htmlFor="selectStatus"
                                         className="form-label">Status <i className="bi bi-pencil"></i></label>
                                     <select type="text" className="form-control"
@@ -109,22 +103,6 @@ function Form() {
                                 <input type="text" className="form-control" id="txtSolicitante"
                                     readOnly name="solicitante" value={objeto.solicitante} onChange={handleChange} />
                             </div>
-                            {
-                                (objeto.resumo !== "") && 
-                                <div className="mb-3">
-                                    <label htmlFor="txtDataAbertura" className="form-label">Data de Abertura</label>
-                                    {(objeto.data_abertura !== "" &&
-                                        <input type="text" className="form-control" id="txtDataAbertura"
-                                            readOnly name="dataAbertura" value={
-                                                new Date(objeto.data_abertura).toLocaleDateString(undefined, {
-                                                    year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric"
-                                                })
-                                            } onChange={handleChange} />)
-                                        || <input type="text" className="form-control" id="txtDataAbertura"
-                                            readOnly name="dataAbertura" value={objeto.data_abertura} onChange={handleChange} />
-                                    }
-                                </div>
-                            }
                             {
                                 ((usuario.tipo !== 'S' && usuario.email !== objeto.responsavel) && <div className="mb-3">
                                     <label htmlFor="selectResponsavel"

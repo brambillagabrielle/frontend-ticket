@@ -58,7 +58,7 @@ function Form() {
                                     readOnly name="id" value={objeto.id} onChange={handleChange} />
                             </div>
                             {
-                                (usuario.tipo !== 'S' && objeto.id === 0) && <div className="mb-3">
+                                (usuario.tipo !== 'S') && <div className="mb-3">
                                     <label htmlFor="selectStatus"
                                         className="form-label">Status <i className="bi bi-pencil"></i></label>
                                     <select type="text" className="form-control"
